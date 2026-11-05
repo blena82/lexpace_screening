@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LexPace | Village of Seven Skills</title>
+<link rel="stylesheet" href="village/village.css">
+<style>
+#app .btn{padding:13px 16px;font-size:15px;cursor:pointer;font-family:inherit}
+.q{font-size:20px;font-weight:800;margin:6px 0 2px}.q[lang=ar],.ar{font-family:Tahoma,Arial,"Noto Sans Arabic",sans-serif}
+</style>
+</head>
+<body class="village"><div class="v-shell">
+<header class="v-top"><div><div class="v-brand">✦ LexPace <span>Village of Seven Skills</span></div><div class="v-sub">Prototype · not a diagnosis · نموذج تجريبي · ليس تشخيصًا</div></div></header>
+<!-- The first question decides the assessment language: Arabic mother tongue -> Arabic village, otherwise English. -->
+<div class="panel-card lang-card" role="dialog" aria-labelledby="lang-q">
+  <div class="panel-head">🏡 Before you begin · <span class="ar" lang="ar">قبل أن تبدأ</span></div>
+  <section id="app" class="mission-card">
+    <p class="q" id="lang-q">Is Arabic your mother tongue?</p>
+    <p class="q" lang="ar" dir="rtl">هل اللغة العربية لغتك الأم؟</p>
+    <p class="muted-s">Your answer sets the language of the activities. · <span class="ar" lang="ar">تحدد إجابتك لغة الأنشطة.</span></p>
+    <div class="answers">
+      <button class="btn" onclick="location.href='village-ar.html'"><span class="ar" lang="ar">نعم، العربية لغتي الأم</span><br><small>Yes</small></button>
+      <button class="btn secondary" onclick="location.href='village-en.html'">No, it is not<br><small class="ar" lang="ar">لا</small></button>
+    </div>
+  </section>
+</div>
+</div><script src="streamlit-bridge.js"></script></body></html>

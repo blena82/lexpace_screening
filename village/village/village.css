@@ -1,0 +1,75 @@
+/* LexPace village: page frame, HUD, minimap, quest journal and the station panel (village reference style). */
+body.village{margin:0;background:#dce9dc;color:#26394a;font:15px system-ui,-apple-system,Segoe UI,sans-serif}
+.v-shell{max-width:1320px;margin:auto;padding:16px}
+.v-top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:12px}
+.v-brand{font-weight:900;font-size:24px;letter-spacing:.4px}.v-brand span{color:#638d7e}.v-sub{font-size:13px;color:#526f77}
+.v-pills{display:flex;gap:8px;flex-wrap:wrap}.v-pill{background:#fff;border:2px solid #b5cbbd;padding:8px 12px;border-radius:9px;font-weight:700}
+.v-layout{display:grid;grid-template-columns:minmax(0,1fr) 275px;gap:14px}
+.stage{position:relative;background:#85bc84;border:7px solid #557c77;border-radius:12px;overflow:hidden;box-shadow:0 8px 0 #b7cbbd;aspect-ratio:384/224}
+#world{display:block;width:100%;height:100%;image-rendering:pixelated;cursor:pointer;touch-action:none}
+.hud{position:absolute;font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;pointer-events:none}
+#hud-objective{left:0;right:0;top:0;background:#243f4adf;color:#fff5cf;padding:7px 14px;font-size:clamp(11px,1.3vw,15px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#hud-objective b{color:#f6d17a}
+#hud-prompt{left:50%;top:40px;transform:translateX(-50%);background:#fffdf0ed;color:#26394a;border:3px solid #587a76;border-radius:10px;box-shadow:0 3px 0 #3e5d58;padding:6px 12px;font-size:clamp(11px,1.25vw,14px);white-space:nowrap;max-width:calc(100% - 260px);overflow:hidden;text-overflow:ellipsis}
+#hud-toast{left:50%;bottom:14px;transform:translateX(-50%);background:#fdf0cf;color:#3f594a;border:3px solid #c5a55b;border-radius:10px;padding:8px 14px;font-size:clamp(11px,1.3vw,15px);white-space:nowrap}
+kbd{display:inline-block;min-width:1.5em;padding:0 4px;margin:0 2px;border:2px solid #739b89;border-radius:5px;font:inherit;text-align:center;background:#e3eee2;color:#23433f}
+.mini{position:absolute;bottom:12px;right:12px;background:#fffdf0ed;border:3px solid #587a76;border-radius:10px;padding:6px 8px 8px;width:clamp(120px,19%,207px);box-shadow:0 3px 0 #3e5d58}
+.mini h3{font-size:11px;margin:0 0 4px;letter-spacing:.6px}.mini canvas{width:100%;height:auto;image-rendering:pixelated;display:block}
+#fade{position:absolute;inset:0;background:#172e3c;opacity:0;pointer-events:none;transition:opacity .25s}#fade.on{opacity:1}
+/* Word Rush: the open book. The word keeps the classic page's stimulus font, size and weight. */
+#wr-book{position:absolute;left:50%;top:18%;transform:translateX(-50%);min-width:230px;width:34%;padding:10px 18px 14px;background:linear-gradient(90deg,#f6eed6 0,#fff8e7 48%,#d9cba5 50%,#fff8e7 52%,#f6eed6 100%);border:4px solid #6d5744;border-radius:8px;box-shadow:0 5px 0 #233f3a;text-align:center;color:#17263d}
+#wr-meta{font:700 12px ui-monospace,Menlo,Consolas,monospace;color:#806347;margin-bottom:4px}
+#wr-word{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;font-size:37px;font-weight:650;letter-spacing:1px;line-height:1.3;word-break:break-word}
+#wr-status{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);max-width:70%;color:#26394a;background:#fffaf0;border:4px solid #5b7d78;border-radius:10px;padding:2px 14px 12px}
+#wr-status .info{margin-top:10px!important}
+.bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px;align-items:center;font-size:14px}
+.dpad{display:grid;grid-template-columns:repeat(3,42px);gap:4px}
+.vbtn{background:#e3eee2;border:2px solid #739b89;border-radius:8px;color:#23433f;padding:10px 12px;cursor:pointer;font-weight:800;font-size:13px;font-family:inherit}
+.vbtn:hover{background:#fff1bd}.vbtn:focus-visible,.mission:focus-visible{outline:3px solid #416fbc;outline-offset:2px}.dpad .vbtn{padding:8px 0;touch-action:none;-webkit-user-select:none;user-select:none}
+.journal{background:#fffdf5;border:2px solid #bdcec0;border-radius:12px;padding:16px;align-self:start}
+.journal h2{font-size:17px;margin:0 0 6px}.journal p{font-size:13px;line-height:1.5;margin:6px 0 12px}
+.mission{width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;border:2px solid #d4dfd4;background:#fff;border-radius:9px;margin:7px 0;padding:10px;cursor:pointer;font:inherit;color:inherit}
+.mission:hover:not(:disabled){border-color:#5b86a8;background:#f0f9f4}.mission.done{background:#e4f2dc}.mission.current{border-color:#c5a55b;background:#fff7dc}.mission:disabled{cursor:default;opacity:.62}
+.mission strong{font-size:13px}.mission small{display:block;color:#617981;margin-top:2px}.mission .t{font-size:12px;font-weight:900;color:#46745c;white-space:nowrap}
+.guide{background:#edf5e9;padding:12px;border-radius:10px;font-size:13px;line-height:1.55;margin-top:12px}
+.muted-s{color:#6c817e;font-size:12px}
+/* Station panel in the village reference's modal format. It restyles the classic station markup
+   (colours, borders, answer grid) without touching any text, font size or stimulus. */
+#panel{position:fixed;inset:0;background:#172e3cb8;display:flex;align-items:center;justify-content:center;overflow:auto;padding:18px;z-index:10}
+#panel[hidden]{display:none}
+.panel-card{width:min(700px,100%);max-height:94vh;overflow:auto;background:#fffaf0;border:5px solid #5b7d78;box-shadow:0 10px 0 #2a4747;border-radius:13px;color:#26394a}
+.panel-head{font:800 22px system-ui,-apple-system,Segoe UI,sans-serif;padding:20px 24px 0;color:#26394a}
+.panel-card #app{padding:8px 24px 24px}
+#app .eyebrow{color:#6c817e;font-size:12px;letter-spacing:.6px}
+#app h1{font-size:25px;margin:6px 0 4px}
+#app .lead{font-size:15px;line-height:1.55;max-width:none}
+#app .progress{height:11px;border-radius:9px;background:#d8e3d7;margin:10px 0 14px}#app .bar{background:#73ad8e}
+#app .pill{background:#fff;border:2px solid #b5cbbd;color:#26394a;font-weight:700;border-radius:9px}
+#app .stimulus{background:#eaf2e9;border:2px solid #c3d7c9;border-radius:10px;margin:15px 0}
+#app .audio{background:#eaf2e9;border:2px solid #c3d7c9;border-radius:10px}
+#app .passage{background:#fffdf5;border:2px solid #c3d7c9;border-radius:10px}
+#app .info{background:#edf5e9;border:0;color:#2f4b45;border-radius:10px}
+#app .choices{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+#app .choice{background:#fff;border:2px solid #739b89;border-radius:8px;min-height:52px;font-weight:600;color:#23433f}
+#app .choice:hover{background:#fff0c7;border-color:#739b89}
+#app .choice.selected{background:#f8d781;border:2px solid #c5a55b;padding:15px 18px}
+#app .btn{background:#f8d781;border:2px solid #c5a55b;color:#23433f;border-radius:8px;font-weight:800}
+#app .btn:hover:not(:disabled){background:#fff1bd}
+#app .btn.secondary,#app .btn.ghost{background:#e3eee2;border-color:#739b89;color:#23433f}
+#app .field select,#app .field input,#app .field textarea,#app textarea{border:2px solid #a9c3b5;border-radius:8px;background:#fff}
+#app .metric{border:2px solid #d4dfd4;background:#fff}
+#app .foot{color:#6c817e}
+/* mission card (on entering a house) and the "restored" card (on finishing one) */
+.mission-card p{line-height:1.55;margin:10px 0}.mission-card .status{font-size:13px;color:#56716a;margin-top:14px}
+.mission-card .answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}
+.mission-card .answers .btn{min-height:52px;font-size:15px}
+.lang-card{max-width:520px;margin:12vh auto 0}
+/* Arabic: right-to-left page; the book's word keeps the classic Arabic stimulus font */
+html[lang=ar] body.village{font-family:Tahoma,Arial,"Noto Sans Arabic",sans-serif}
+html[lang=ar] .mission{text-align:right}
+html[lang=ar] #wr-word{font-family:Tahoma,Arial,"Noto Sans Arabic",sans-serif;letter-spacing:0}
+html[lang=ar] #hud-objective,html[lang=ar] #hud-prompt,html[lang=ar] #hud-toast,html[lang=ar] #wr-meta{font-family:Tahoma,Arial,"Noto Sans Arabic",sans-serif}
+
+@media(max-width:600px){#app .choices,.mission-card .answers{grid-template-columns:1fr}}
+@media(max-width:950px){.v-layout{grid-template-columns:1fr}.mini{width:150px}.v-brand{font-size:20px}#hud-prompt{max-width:calc(100% - 190px)}}
+@media(max-width:600px){.v-shell{padding:8px}.panel-card #app{padding:18px}.mini{width:92px;bottom:4px;right:4px;padding:3px 4px 4px;border-width:2px}.mini h3{font-size:8px;margin-bottom:2px}#wr-book{top:auto;bottom:3%;width:62%;min-width:0;padding:6px 10px 8px}#wr-meta{font-size:10px;margin-bottom:0}.stage:has(#wr-book:not([hidden])) #hud-prompt{display:none}#hud-prompt{top:34px;max-width:calc(100% - 16px)}}
+.dpad{direction:ltr}
